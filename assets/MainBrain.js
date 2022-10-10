@@ -4,7 +4,9 @@ const cardHandler = {
     gameStarted: false,
 };
 
-const flipContainer = document.querySelector('.flip-container .flipper').click(function() {
-    $(this).closest('.flip-container').toggleClass('hover');
-    $(this).css('transform, rotateY(180deg)');
+var cards = document.querySelectorAll('.card');
+[...cards].forEach((card)=>{
+  card.addEventListener( 'click', function() {
+    card.classList.toggle('is-flipped');
   });
+});
