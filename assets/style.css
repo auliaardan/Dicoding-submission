@@ -52,3 +52,15 @@ body { font-family: sans-serif; }
   background-size: cover; 
   transform: rotateY(180deg);
 }
+
+.turn-off{
+  display: none !important;
+}
+
+.turn-on{
+  display: block !important;
+}
+
+.card-holder{
+  display: none;
+}
