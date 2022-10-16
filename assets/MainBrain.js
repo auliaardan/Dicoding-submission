@@ -4,7 +4,7 @@ const questions = [
   "Sebutkan salah satu hal yang sangat kamu khawatirkan, apakah aku bisa membantunya?",
   "Apakah ada guru yang mengubah hidupmu?",
   "Apa prioritas utamamu untuk sisa tahun ini?",
-  "Kapan terakhir kali aku membuat kamu merasa hebat tentang diri sendiri dan bagaimana aku bisa melakukannya lebih sering?",
+  "Kapan terakhir kali aku membuat kamu merasa hebat tentang dirimu dan bagaimana aku bisa melakukannya lebih sering?",
   "Apa yang paling kamu nantikan saat menjadi tua?",
   "Apa sesuatu yang kamu berusaha sangat keras menyukai tetapi tidak bisa?",
   "Apa hal yang paling kamu tidak sukai dari dirimu sendiri, apakah ingin mengubahnya?",
@@ -24,16 +24,25 @@ const questions = [
 const cardHandler = {
     displayCard1: '',
     displayCard2: '',
-    gameState: 0, //0 = Not yet choosen card, 1 = chose card
-    hasChoosen: false,
-    gameStarted: false,
+    gameState: 0, //0 = Not yet choosen card, 1 = chose card, 3 = loop back
+    indQuestion1: 0,
+    indQuestion2: 0,
 };
 
 const cards = document.querySelectorAll('.card');
-[...cards].forEach((card)=>{
+[...cards].forEach((card, i)=>{
   card.addEventListener( 'click', function(event) {
-    cardChosen();
-    card.classList.toggle('is-flipped');
+    switch (cardHandler.gameState) {
+      case 0:
+        card.classList.toggle('is-flipped');
+        cardChosen(i);
+        break;
+      case 1:
+        nextCard(i);
+        break;
+      default:
+        break;
+    }
   });
 });
 
@@ -65,14 +74,10 @@ function startGame () {
 const cardBack1 = document.querySelector('#card_back_1');
 const cardBack2 = document.querySelector('#card_back_2');
 function loadQuestions (){
-  if(cardHandler.gameStarted == true)
-    return;
-  cardHandler.gameStarted = true;
-  
   let indQuestion1 = random(questions);
   cardHandler.displayCard1 = questions[indQuestion1];  
   cardBack1.innerHTML = cardHandler.displayCard1;
-  questions.pop(indQuestion1);
+  cardHandler.indQuestion1 = indQuestion1;
 
   if (questions.length == 1){
     return
@@ -80,19 +85,44 @@ function loadQuestions (){
   let indQuestion2 = random(questions);
   cardHandler.displayCard2 = questions[indQuestion2];  
   cardBack2.innerHTML = cardHandler.displayCard2;
-  questions.pop(indQuestion2);
+  cardHandler.indQuestion2 = indQuestion2;
 }
 
-function cardChosen (){
-  if ( cardHandler.hasChoosen == true)
+function cardChosen(cardIndex){
+  cardHandler.gameState = 1;
+  if(questions == 1)
     return;
-  cardHandler.hasChoosen == true;
+  buttonSwitcher(cardIndex);
+}
 
-  if (questions.length >= 1){
-    loadQuestions;
-    cardHandler.hasChoosen == false;
-  } else {
-    return;
+function nextCard(cardIndex){
+  cards[cardIndex].classList.toggle('is-flipped');
+  cardHandler.gameState = 2;
+  if(cardIndex == 0){
+    questions.pop(cardHandler.indQuestion1);
+  } else{
+    questions.pop(cardHandler.indQuestion2);
+  }
+  if(questions.length == 0){
+    return
+  }
+  setTimeout(() => {
+    loadQuestions();
+    cardHandler.gameState = 0;
+    if(questions.length > 1){
+      buttonSwitcher(cardIndex);
+    } else if(cardIndex == 1){
+        buttonSwitcher(cardIndex);
+        buttonSwitcher(0);
+      }
+  }, 1500);
+}
+
+function buttonSwitcher(cardIndex){
+  if(cardIndex == 0){
+    cards[1].parentElement.classList.toggle('turn-off');
+  }else{
+    cards[0].parentElement.classList.toggle('turn-off');
   }
 }
 
