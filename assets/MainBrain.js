@@ -67,11 +67,31 @@ function loadQuestions (){
     return;
   cardHandler.gameStarted = true;
   
+  let indQuestion1 = random(questions);
+  cardHandler.displayCard1 = questions[indQuestion1];  
+  cardBack1.innerHTML = cardHandler.displayCard1;
+  questions.pop(indQuestion1);
+
+  if (questions.length == 1){
+    return
+  }
+  let indQuestion2 = random(questions);
+  cardHandler.displayCard2 = questions[indQuestion2];  
+  cardBack2.innerHTML = cardHandler.displayCard2;
+  questions.pop(indQuestion2);
 }
 
-function random(arr){
+function cardChosen (target){
+  if ( cardHandler.hasChoosen == false)
+    return;
+  cardHandler.hasChoosen == true;
   
-  return ;
+  
+}
+
+function random(cardArr){
+  let number = Math.floor(Math.random() * cardArr.length)
+  return number;
 }
 
 btn_startGame.addEventListener('click', startGame);
