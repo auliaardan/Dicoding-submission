@@ -22,7 +22,8 @@ const questions = [
 ]
 
 const cardHandler = {
-    displayQuestion: '',
+    displayCard1: '',
+    displayCard2: '',
     hasChoosen: false,
     gameStarted: false,
 };
@@ -59,11 +60,18 @@ function startGame () {
   }, 1000);
 }
 
+const cardBack1 = document.querySelector('#card_back_1');
+const cardBack2 = document.querySelector('#card_back_2');
 function loadQuestions (){
   if(cardHandler.gameStarted == true)
     return;
   cardHandler.gameStarted = true;
+  
+}
 
+function random(arr){
+  
+  return ;
 }
 
 btn_startGame.addEventListener('click', startGame);
