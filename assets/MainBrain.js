@@ -24,13 +24,15 @@ const questions = [
 const cardHandler = {
     displayCard1: '',
     displayCard2: '',
+    gameState: 0, //0 = Not yet choosen card, 1 = chose card
     hasChoosen: false,
     gameStarted: false,
 };
 
 const cards = document.querySelectorAll('.card');
 [...cards].forEach((card)=>{
-  card.addEventListener( 'click', function() {
+  card.addEventListener( 'click', function(event) {
+    cardChosen();
     card.classList.toggle('is-flipped');
   });
 });
@@ -81,12 +83,17 @@ function loadQuestions (){
   questions.pop(indQuestion2);
 }
 
-function cardChosen (target){
-  if ( cardHandler.hasChoosen == false)
+function cardChosen (){
+  if ( cardHandler.hasChoosen == true)
     return;
   cardHandler.hasChoosen == true;
-  
-  
+
+  if (questions.length >= 1){
+    loadQuestions;
+    cardHandler.hasChoosen == false;
+  } else {
+    return;
+  }
 }
 
 function random(cardArr){
@@ -95,4 +102,3 @@ function random(cardArr){
 }
 
 btn_startGame.addEventListener('click', startGame);
-
