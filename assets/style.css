@@ -93,6 +93,32 @@ header h1{
   width: 100px;
 }
 
+main{
+  margin: 50px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.countdown{
+  font-family: 'Bukhari-Script';
+  color: white;
+  text-shadow: 2px 2px #fd6155 ;
+  transform: rotate(-20deg);
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+}
+
+#startButton{
+  background-color: #cb6ce6;
+  color: white;
+  font-family: 'Bukhari-Script';
+  border-radius: 10px;
+  padding: 5px 30px;
+  white-space: nowrap;
+}
 
 footer{
   background-color: #ff66c4;
@@ -103,5 +129,7 @@ footer{
 }
 
 @media screen and (max-width: 670px) {
-   
+  main{
+    margin: 50px 10px;
+  }
 }
