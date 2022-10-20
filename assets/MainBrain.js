@@ -25,8 +25,6 @@ const cardHandler = {
     displayCard1: '',
     displayCard2: '',
     gameState: 0, //0 = Not yet choosen card, 1 = chose card, 3 = loop back
-    indQuestion1: 0,
-    indQuestion2: 0,
 };
 
 const cards = document.querySelectorAll('.card');
@@ -74,24 +72,23 @@ function startGame () {
 const cardBack1 = document.querySelector('#card_back_1');
 const cardBack2 = document.querySelector('#card_back_2');
 function loadQuestions (){
-  let indQuestion1 = random(questions);
-  cardHandler.displayCard1 = questions[indQuestion1];  
+  let numQuestion1 = random(questions);
+  cardHandler.displayCard1 = questions[numQuestion1];  
   cardBack1.innerHTML = cardHandler.displayCard1;
-  cardHandler.indQuestion1 = indQuestion1;
-  console.log(cardHandler.displayCard1);
+  console.log("handed card L" + cardHandler.displayCard1);
   
   if (questions.length == 1){
     return;
   }
 
-  let indQuestion2 = random(questions);
-  while (indQuestion1 == indQuestion2) {
-    indQuestion2 = random(questions);
+  let numQuestion2 = random(questions);
+  while (numQuestion1 == numQuestion2) {
+    numQuestion2 = random(questions);
   }
-  cardHandler.displayCard2 = questions[indQuestion2];  
+  
+  cardHandler.displayCard2 = questions[numQuestion2];  
   cardBack2.innerHTML = cardHandler.displayCard2;
-  cardHandler.indQuestion2 = indQuestion2;
-  console.log(cardHandler.displayCard2);
+  console.log("Handed card R" + cardHandler.displayCard2);
 
 }
 
@@ -105,10 +102,11 @@ function cardChosen(cardIndex){
 function nextCard(cardIndex){
   cards[cardIndex].classList.toggle('is-flipped');
   cardHandler.gameState = 2;
+  console.log("index" + cardIndex);
   if(cardIndex == 0){
-    questions.pop(cardHandler.indQuestion1);
+    removeQuestion(questions, cardHandler.displayCard1);
   } else{
-    questions.pop(cardHandler.indQuestion2);
+    removeQuestion(questions, cardHandler.displayCard2);
   }
   if(questions.length == 0){
     endgame()
@@ -124,6 +122,10 @@ function nextCard(cardIndex){
         buttonSwitcher(0);
       }
   }, 1000);
+}
+
+function removeQuestion(arr, toRemove) {
+  return arr.filter(i => i !== toRemove);
 }
 
 function endgame(){
