@@ -74,19 +74,25 @@ function startGame () {
 const cardBack1 = document.querySelector('#card_back_1');
 const cardBack2 = document.querySelector('#card_back_2');
 function loadQuestions (){
-  console.log(questions.length);
   let indQuestion1 = random(questions);
   cardHandler.displayCard1 = questions[indQuestion1];  
   cardBack1.innerHTML = cardHandler.displayCard1;
   cardHandler.indQuestion1 = indQuestion1;
-
+  console.log(cardHandler.displayCard1);
+  
   if (questions.length == 1){
     return;
   }
+
   let indQuestion2 = random(questions);
+  while (indQuestion1 == indQuestion2) {
+    indQuestion2 = random(questions);
+  }
   cardHandler.displayCard2 = questions[indQuestion2];  
   cardBack2.innerHTML = cardHandler.displayCard2;
   cardHandler.indQuestion2 = indQuestion2;
+  console.log(cardHandler.displayCard2);
+
 }
 
 function cardChosen(cardIndex){
@@ -105,8 +111,9 @@ function nextCard(cardIndex){
     questions.pop(cardHandler.indQuestion2);
   }
   if(questions.length == 0){
-    return;
+    endgame()
   }
+
   setTimeout(() => {
     loadQuestions();
     cardHandler.gameState = 0;
@@ -117,6 +124,10 @@ function nextCard(cardIndex){
         buttonSwitcher(0);
       }
   }, 1000);
+}
+
+function endgame(){
+  cardHolder.classList.remove('turn-on');
 }
 
 function buttonSwitcher(cardIndex){
