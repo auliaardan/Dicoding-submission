@@ -75,7 +75,7 @@ function loadQuestions (){
   let numQuestion1 = random(questions);
   cardHandler.displayCard1 = questions[numQuestion1];  
   cardBack1.innerHTML = cardHandler.displayCard1;
-  console.log("handed card L " + cardHandler.displayCard1);
+  
   
   if (questions.length == 1){
     return;
@@ -88,7 +88,6 @@ function loadQuestions (){
   
   cardHandler.displayCard2 = questions[numQuestion2];  
   cardBack2.innerHTML = cardHandler.displayCard2;
-  console.log("Handed card R " + cardHandler.displayCard2);
 
 }
 
@@ -102,14 +101,14 @@ function cardChosen(cardIndex){
 function nextCard(cardIndex){
   cards[cardIndex].classList.toggle('is-flipped');
   cardHandler.gameState = 2;
-  console.log("index" + cardIndex);
   if(cardIndex == 0){
-    removeQuestion(questions, cardHandler.displayCard1);
+    removeQuestion(questions, questions.indexOf(cardHandler.displayCard1));
   } else{
-    removeQuestion(questions, cardHandler.displayCard2);
+    removeQuestion(questions, questions.indexOf(cardHandler.displayCard2));
   }
   if(questions.length == 0){
-    endgame()
+    endgame();
+    return;
   }
 
   setTimeout(() => {
@@ -124,8 +123,8 @@ function nextCard(cardIndex){
   }, 1000);
 }
 
-function removeQuestion(arr, toRemove) {
-  arr = arr.filter(i => i !== toRemove);
+function removeQuestion(arr, item) {
+  arr.splice(item, 1);
 }
 
 function endgame(){
