@@ -75,7 +75,7 @@ function loadQuestions (){
   let numQuestion1 = random(questions);
   cardHandler.displayCard1 = questions[numQuestion1];  
   cardBack1.innerHTML = cardHandler.displayCard1;
-  console.log("handed card L" + cardHandler.displayCard1);
+  console.log("handed card L " + cardHandler.displayCard1);
   
   if (questions.length == 1){
     return;
@@ -88,7 +88,7 @@ function loadQuestions (){
   
   cardHandler.displayCard2 = questions[numQuestion2];  
   cardBack2.innerHTML = cardHandler.displayCard2;
-  console.log("Handed card R" + cardHandler.displayCard2);
+  console.log("Handed card R " + cardHandler.displayCard2);
 
 }
 
@@ -125,7 +125,7 @@ function nextCard(cardIndex){
 }
 
 function removeQuestion(arr, toRemove) {
-  return arr.filter(i => i !== toRemove);
+  arr = arr.filter(i => i !== toRemove);
 }
 
 function endgame(){
