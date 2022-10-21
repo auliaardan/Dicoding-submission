@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/gagalin');
+
 body { 
   font-family: 'Times New Roman', Times, serif; 
   background-color: #d9d9d9;
@@ -68,6 +70,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 5px;
+  color: #cb6ce6;
 }
 
 .turn-off{
@@ -92,8 +95,9 @@ header{
 }
 
 header h1{
-  font-family: 'Bukhari-Script';
+  font-family: 'Gagalin', sans-serif;
   color: azure;
+  font-size: 35px;
 }
 
 .img-logo{
@@ -118,8 +122,20 @@ main{
 }
 
 aside{
+  padding: 10px 5px;
+  align-self: flex-start;
   flex-basis: 25%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 5px;
+  background-color: #5ce1e6;
+  font-family: 'Gagalin', sans-serif;
+  border-color: black;
+  color: #5271ff;
 }
 
 .content{
@@ -136,6 +152,13 @@ aside{
 .game-screen{
   display: flex;
   margin: 0 auto;
+}
+
+.start-menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #startButton{
@@ -155,23 +178,35 @@ aside{
 
 .description{
   padding: 0 10px;
-  color: #ad1212;
+  color: #5271ff;
   background-color: #77777748;
   margin-top: 20px;
+  font-family: 'Gagalin', sans-serif;
 }
 
 footer{
   background-color: #ff66c4;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
 }
 
 @media screen and (max-width: 1020px) {
   main{
     flex-direction: column;
   }
+
+  aside{
+    align-self: stretch;
+  }
 }
 
 @media screen and (max-width: 670px) {
   main{
     margin: 25px 5px;
+  }
+
+  .turn-on{
+    flex-direction: column;
   }
 }
