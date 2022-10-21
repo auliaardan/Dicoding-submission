@@ -129,7 +129,7 @@ function removeQuestion(arr, item) {
 
 function endgame(){
   cardHolder.classList.remove('turn-on');
-  
+  txt_countDown.innerHTML = "Thank you for playing!";
 }
 
 function buttonSwitcher(cardIndex){
