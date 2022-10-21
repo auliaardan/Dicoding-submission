@@ -1,6 +1,6 @@
 const questions = [
   "Sebutkan satu kegiatan favoritmu dengan aku?",
-  "Apa salah satu rintangan yang pernah kamu hadapi, dan bagaimana kamu menanganinya?",
+  "Apa salah satu rintangan yang pernah kamu hadapi dan bagaimana kamu menanganinya?",
   "Sebutkan salah satu hal yang sangat kamu khawatirkan, apakah aku bisa membantunya?",
   "Apakah ada guru yang mengubah hidupmu?",
   "Apa prioritas utamamu untuk sisa tahun ini?",
@@ -10,13 +10,13 @@ const questions = [
   "Apa hal yang paling kamu tidak sukai dari dirimu sendiri, apakah ingin mengubahnya?",
   "Sebutkan 3 hal yang kamu senang lakukan denganku?",
   "Apa penyesalan terbesar kamu, apakah kamu ingin mengubahnya?",
-  "Apa yang kebanyakan orang melebih-lebihkan atau meremehkan tentang kamu?",
+  "Apa yang kebanyakan orang melebih-lebihkan mengenai kamu?",
   "Apa pujian terbaik yang pernah kamu dapatkan?",
   "Apa ada hal yang kamu pernah lakukan, namun tidak akan pernah melakukanya lagi?",
-  "Sebutkan kebodohan/kekonyolan terkenang kamu saat SD/SMP/SMA",
+  "Sebutkan kebodohan/kekonyolan yang paling berkesan saat kamu SD/SMP/SMA",
   "Apa cita-citamu 10 tahun yang lalu, apakah sudah tercapai?",
   "Apa saja yang membuat kamu gugup?",
-  "Apakah kamu percaya bahwa setiap orang pantas mendapatkan pengampunan?",
+  "Apakah kamu percaya bahwa setiap orang pantas mendapatkan kesempatan kedua?",
   "Apa saja hal yang membuat kamu bosen?",
   "Ceritakan salah satu fantasi yang kamu pernah pikirkan/harapkan"
 ]
@@ -129,6 +129,7 @@ function removeQuestion(arr, item) {
 
 function endgame(){
   cardHolder.classList.remove('turn-on');
+  
 }
 
 function buttonSwitcher(cardIndex){

@@ -11,8 +11,8 @@ body {
 
 .scene {
   display: inline-block;
-  width: 200px;
-  height: 300px;
+  width: 218px;
+  height: 447px;
   margin: 40px 20px;
   perspective: 600px;
 }
@@ -39,7 +39,7 @@ body {
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 25px;
   backface-visibility: hidden;
 }
 
@@ -62,12 +62,21 @@ body {
   transform: rotateY(180deg);
 }
 
+.card-text-area{
+  display: flex;
+  height: 447px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+}
+
 .turn-off{
   display: none !important;
 }
 
 .turn-on{
-  display: block !important;
+  display: flex !important;
+  flex-direction: row;
 }
 
 .card-holder{
@@ -108,12 +117,20 @@ main{
   font-size: 50px;
 }
 
+aside{
+  flex-basis: 25%;
+  display: flex;
+}
+
 .content{
   flex-basis: 75%;
   display: flex;
   flex-direction: column;
   background-color: #5ce1e6;
-  padding: 10px 5px;
+  margin: 0 15px 10px 15px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 5px;
 }
 
 .game-screen{
@@ -136,16 +153,25 @@ main{
   cursor: pointer;
 }
 
+.description{
+  padding: 0 10px;
+  color: #ad1212;
+  background-color: #77777748;
+  margin-top: 20px;
+}
+
 footer{
   background-color: #ff66c4;
 }
 
 @media screen and (max-width: 1020px) {
-  
+  main{
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 670px) {
   main{
-    margin: 50px 10px;
+    margin: 25px 5px;
   }
 }
